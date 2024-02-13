@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, get_object_or_404
+from django.shortcuts import redirect, get_object_or_404, render
 from .models import CartItem, Product
 from .forms import CartAddProductForm
 
@@ -15,8 +15,8 @@ def cart_detail(request):
                     'quantity': cart[key]['quantity'],
                     'total_price': int(cart[key]['quantity']) * product.price,
                     # Add any variations here
-                })
-    return render(request, 'cart/detail.html', {'cart_items': cart_items})
+                                    })
+    return render(request, 'cart/cart_detail.html', {'cart_items': cart_items})
 
 def cart_add(request, product_id):
     cart = request.session.get('cart', {})

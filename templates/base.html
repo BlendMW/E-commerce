@@ -1,19 +1,26 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ request.LANGUAGE_CODE }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Your E-Commerce Site{% endblock %}</title>
+    <title>{% block title %}Hello base.html E-Commerce Site{% endblock %}</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="{% static 'css/custom.css' %}" rel="stylesheet">
-    {% block extra_css %}{% endblock %}
+    <!-- style CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+     <!-- FontAwesome for icons -->
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+      {% block extra_css %}{% endblock %}
 </head>
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Your Brand</a>
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <!-- Replace 'path/to/your/logo.png' with the actual path to your logo image -->
+            <img src="{% static 'co/static/images/logo.png' %}" alt="Warani" height="50">
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -25,7 +32,25 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Products</a>
                 </li>
-                <!-- Add more navigation links here -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+                <!-- Icons -->
+                <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'cart_detail' %}">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'profile' %}">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -36,18 +61,31 @@
     </div>
 
     <!-- Footer -->
-    <footer class="footer mt-auto py-3 bg-light">
-        <div class="container">
-            <span class="text-muted">© 2024 Your Company</span>
-        </div>
-    </footer>
+            <footer class="footer mt-auto py-3 bg-light">
+            <div class="container text-center">
+                <span class="text-muted">© 2024 Warani IT Solutions</span>
+                <!-- Social media links -->
+                <div>
+                    <a href="https://facebook.com/yourpage" class="text-dark mx-2">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://twitter.com/yourpage" class="text-dark mx-2">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://instagram.com/yourpage" class="text-dark mx-2">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <!-- Add more social media links as needed -->
+                </div>
+            </div>
+        </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- Custom JS -->
-    <script src="{% static 'js/custom.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
     {% block extra_js %}{% endblock %}
 </body>
 </html>

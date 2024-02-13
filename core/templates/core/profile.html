@@ -1,35 +1,12 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en, ar">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Profile - Your E-Commerce Site{% endblock %}</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    {% block extra_css %}{% endblock %}
-</head>
-<body>
-    <!-- Navbar (if needed) -->
-    <!-- Content -->
-    <div class="container">
-        {% block content %}
-        <!-- Profile Content -->
-        <h1>Profile اخو القحبة </h1>
-        <!-- Display user profile information -->
-        {% endblock %}
-    </div>
+{% extends 'base.html' %}
 
-    <!-- Footer (if needed) -->
-
-    <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- Custom JS -->
-    <script src="{% static 'js/custom.js' %}"></script>
-    {% block extra_js %}{% endblock %}
-</body>
-</html>
+{% block content %}
+<div class="container mt-4">
+    <h2>User Profile</h2>
+    <p><strong>Username:</strong> {{ request.user.username }}</p>
+    <p><strong>Email:</strong> {{ request.user.email }}</p>
+    <p><strong>Mobile Number:</strong> {{ user_profile.mobile_number }}</p>
+    <!-- Add a link to the edit profile page -->
+    <a href="{% url 'edit_profile' %}" class="btn btn-primary">Edit Profile</a>
+</div>
+{% endblock %}
