@@ -1,0 +1,35 @@
+/* css/style.css */
+.product-details {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+.product-details img {
+    max-width: 100%;
+    height: auto;
+}
+
+:root {
+    --bs-primary: #007bff; /* Blue */
+    --bs-secondary: #6c757d; /* Gray */
+    --bs-info: #fd7e14; /* Orange */
+  }
+  body {
+    font-family: 'Roboto', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+
+
+  .product-image img {
+    max-width: 100%; /* Ensures image is not wider than its container */
+    height: auto; /* Maintains aspect ratio */
+    object-fit: cover; /* Ensures the image covers the area of the container without stretching */
+}
+
+
+  
+/* Add more styles for navigation, footer, and other elements */
