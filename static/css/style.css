@@ -25,7 +25,7 @@
 
 
   .product-image img {
-    max-width: 100%; /* Ensures image is not wider than its container */
+    max-width: 50%; /* Ensures image is not wider than its container */
     height: auto; /* Maintains aspect ratio */
     object-fit: cover; /* Ensures the image covers the area of the container without stretching */
 }

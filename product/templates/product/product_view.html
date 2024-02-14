@@ -1,51 +1,14 @@
-{% load static %}
+{% extends 'base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ product.name }}</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <style>
-        img {
-            max-width: 100%;
-            height: auto;
-            object-fit: contain; /* Change to 'contain' if you don't want images to be cropped */
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <!-- Bootstrap Navigation bar here -->
-    </header>
+{% block content %}
 
-    <main class="container mt-5">
-        <div class="row">
-            <div class="col-md-6">
-                <img src="{{ product.image.url }}" alt="Product Image">
-            </div>
-            <div class="col-md-6">
-                <h1>{{ product.name }}</h1>
-                <p>{{ product.description }}</p>
-                <p class="font-weight-bold">Price: ${{ product.price }}</p>
-                <a href="{% url 'product_view' product_id=product.id %}">View Product</a>
-                <!-- Add to Cart Button -->
-                <button class="btn btn-primary">Add to Cart</button>
-            </div>
-        </div>
-    </main>
-
-    <footer class="mt-5">
-        <!-- Footer content here -->
-    </footer>
-
-    <!-- Bootstrap JS, Popper.js, and jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js" integrity="sha384-ZQnOn2Go6J5hTf4MNCz1zjBBiX4WVZtSWSIdP3zVYM5lC90mSAfZ+BIHkiPl7AnN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+OTSO+6C1FLy5eE4lB/fWJ0Kh6ZeK7M4IWD" crossorigin="anonymous"></script>
-    <script src="{% static 'js/script.js' %}"></script>
-</body>
-</html>
+<div class="container mt-4">
+    <h2>{{ product.name }}</h2>
+    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid">
+    <p>${{ product.price }}</p>
+    <p>{{ product.description }}</p>
+    <a href="{% url 'add_to_cart' product.id %}" class="btn btn-primary">Add to Cart</a>
+    <br>
+    <a href="{% url 'product_list' %}" class="btn btn-secondary mt-2">Back to Products</a>
+</div>
+{% endblock %}

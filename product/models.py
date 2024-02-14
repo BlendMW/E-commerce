@@ -2,14 +2,38 @@ from pyexpat import features
 from django.db import models
 
 class Product(models.Model):
+    COLOR_CHOICES = (
+        ('red', 'Red'),
+        ('blue', 'Blue'),
+        ('green', 'Green'),
+        ('yellow', 'Yellow'),
+        ('black', 'Black'),
+        ('white', 'White'),
+        ('gray', 'Gray'),
+        ('brown', 'Brown'),
+        ('purple', 'Purple'),
+        ('orange', 'Orange'),
+        ('pink', 'Pink'),
+    )
+    SIZE_CHOICES = (
+        ('xs', 'Extra Small'),
+        ('s', 'Small'),
+        ('m', 'Medium'),
+        ('l', 'Large'),
+        ('xl', 'Extra Large'),
+        ('xxl', 'Double Extra Large'),
+        ('xxxl', 'Triple Extra Large'),
+    )
+
     name = models.CharField(max_length=255)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     image = models.ImageField(upload_to='product_images/')
-    colors = models.CharField(max_length=255, blank=True)  # Simple comma-separated colors
-    size = models.CharField(max_length=255, blank=True)  # Simple comma-separated sizes
+    available_colors = models.CharField(max_length=255, choices=COLOR_CHOICES, blank=True)
+    available_sizes = models.CharField(max_length=255, choices=SIZE_CHOICES, blank=True)
     quantity = models.PositiveIntegerField(default=0)
-    features = models.TextField(blank=True)  # Simple comma-separated features
+    features = models.TextField(blank=True)
+
     # Rating could be an average dynamically calculated from reviews
     
     def __str__(self):
@@ -39,3 +63,12 @@ class Review(models.Model):
     
     def __str__(self):
         return f"Review by {self.user.username} on {self.product.name}"
+
+class ProductVariant(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='variants')
+    color = models.CharField(max_length=255, choices=Product.COLOR_CHOICES)
+    size = models.CharField(max_length=255, choices=Product.SIZE_CHOICES)
+    quantity = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return f"{self.product.name} - {self.color} - {self.size}"
