@@ -6,5 +6,6 @@ urlpatterns = [
     path('contact/', contact, name='contact'),
     path('profile/', profile, name='profile'),
     path('profile/edit/', edit_profile, name='edit_profile'),
-  
+
+      
     ]
