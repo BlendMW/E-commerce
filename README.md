@@ -4,7 +4,25 @@ This Project is foe e-commerce business to sell a few products or one product.
 
 ## Installation
 
-Instructions on how to get your project up and running on a local machine for development and testing purposes. Break down into several steps if necessary.
+## Running the Django Server
+
+To run the Django development server on port 8080, follow these steps:
+
+1. Activate virtual environment (if you're using one):
+   ```bash
+   source path/to/your/virtualenv/bin/activate  # Linux/Mac
+   path\to\your\virtualenv\Scripts\activate     # Windows
+Change directory to Django project directory:
+
+bash
+Copy code
+cd path/to/your/django/project
+Start the Django development server on port 8080:
+
+bash
+Copy code
+python manage.py runserver 8080
+Open your web browser and navigate to http://localhost:8080/ to access Django application.
 
 ```bash
 git clone https://yourproject.git
@@ -29,11 +47,10 @@ License
 State the license for the project, for example, MIT, GPL, etc.
 
 Contact Information
-Provide details on how to reach out to you, or the project maintainer. This could be an email address, Twitter handle, etc.
+Contact Warani for Manpower & Trade and tech services 
+Mobil: +964 770 4444 866 
 
-Acknowledgments
-Mention any inspirations, code snippets, etc.
-Links to resources you found helpful
-Any collaborators or contributors
+Author:
+Blend M. Warani 
 
 

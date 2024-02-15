@@ -1,3 +1,4 @@
+<!-- order_history.html -->
 {% extends 'base.html' %}
 
 {% block content %}
@@ -7,6 +8,8 @@
         {% for order in orders %}
         <li>
             <a href="{% url 'order_details' order.id %}">Order #{{ order.id }} - {{ order.order_date }}</a>
+            <p>Total Price: ${{ order.total_price }}</p>
+            <p>Status: {{ order.status }}</p>
         </li>
         {% endfor %}
     </ul>

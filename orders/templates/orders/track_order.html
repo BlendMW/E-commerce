@@ -1,14 +1,37 @@
+<!-- track_order.html -->
 {% extends 'base.html' %}
 
 {% block content %}
 <div class="container mt-4">
     <h2>Track Order</h2>
-    <form action="{% url 'track_order' %}" method="post">
+    <form id="track_order_form" method="post">
         {% csrf_token %}
         <label for="order_id">Order ID:</label>
         <input type="text" id="order_id" name="order_id">
         <button type="submit">Track</button>
     </form>
-    <!-- Display order status if available -->
+    <div id="order_status"></div>
 </div>
+
+<script>
+    // Use AJAX to track the order status
+    document.getElementById('track_order_form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var orderId = document.getElementById('order_id').value;
+    fetch(`/track_order/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken
+        },
+        body: JSON.stringify({ order_id: orderId })
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('order_status').innerText = data.status;
+    })
+    .catch(error => console.log('Error:', error));
+});
+
+</script>
 {% endblock %}

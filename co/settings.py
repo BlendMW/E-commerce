@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
-from pathlib import Path
 from django.utils.translation import gettext_lazy as _
 import os
 
@@ -24,6 +23,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-y@0+yis!25m1a0!^6plsk6+su8h*xh2zsn(i++^(0m)!f2n+)$'
+
+#redirect all HTTP requests to HTTPS.
+SECURE_SSL_REDIRECT = False
+
+#ensure cookies are only sent over HTTPS
+SESSION_COOKIE_SECURE = False
+
+#ensure CSRF cookies are also only sent over HTTPS.
+CSRF_COOKIE_SECURE = False
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -46,6 +54,7 @@ INSTALLED_APPS = [
     'checkout',
     'product',
     'core',
+    'sslserver',
 ]
 
 MIDDLEWARE = [

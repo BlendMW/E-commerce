@@ -1,35 +1,35 @@
-/* css/style.css */
-.product-details {
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
+/* Sticky Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-.product-details img {
-    max-width: 100%;
-    height: auto;
+/* Footer Enhancements */
+.footer {
+  background-color: var(--bs-dark);
+  color: var(--bs-light);
 }
 
+.footer a {
+  color: var(--bs-info);
+}
+
+.footer a:hover {
+  color: var(--bs-primary);
+}
+
+/* Product Card Design */
+.product-card {
+  transition: transform .2s; /* Animation */
+}
+
+.product-card:hover {
+  transform: scale(1.05); /* Zoom Effect */
+}
+
+/* Update Primary and Secondary Colors */
 :root {
-    --bs-primary: #007bff; /* Blue */
-    --bs-secondary: #6c757d; /* Gray */
-    --bs-info: #fd7e14; /* Orange */
-  }
-  body {
-    font-family: 'Roboto', sans-serif;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif;
-  }
-
-
-
-  .product-image img {
-    max-width: 50%; /* Ensures image is not wider than its container */
-    height: auto; /* Maintains aspect ratio */
-    object-fit: cover; /* Ensures the image covers the area of the container without stretching */
+  --bs-primary: #0056b3; /* New Blue */
+  --bs-secondary: #495057; /* New Gray */
 }
-
-
-  
-/* Add more styles for navigation, footer, and other elements */
